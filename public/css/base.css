@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+/******* Change Box Model ***************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Styles for checkerboard pattern and body background */
+html {
+  font-family: 'Open Sans', sans-serif;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70"><rect width="35" height="35" fill="%23080808"/><rect x="35" width="35" height="35" fill="%23f60fde"/><rect y="35" width="35" height="35" fill="%23f60fde"/><rect x="35" y="35" width="35" height="35" fill="%23080808"/></svg>') repeat;
+}
+
+body {
+  background-color: rgb(221, 239, 245);
+  max-width: 480px;
+  width: 100%;
+  margin: 10px auto;
+  border-radius: 6px;
+  border: 3px solid #080808;
+  box-shadow: 4px 4px 8px 2px #080808;
+}
+
+/* Header Styles */
+#top-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+}
+
+.siteName a, #tools a,
+.siteName a:visited, #tools a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.siteName {
+  font-size: 1.5rem;
+}
+
+#tools {
+  font-size: 0.8rem;
+}
+
+/* Navigation Styles */
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  margin: 0 7px;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+}
+
+.nav-list li a {
+  padding: 10px 15px;
+}
+
+.nav-list li a:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Body Styles */
+h1 {
+  text-align: center;
+  width: 100%;
+  margin: 15px auto 10px;
+}
+
+.promo-card {
+  background-color: #ed13de23;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.promo-card h3, p {
+  margin: auto;
+}
