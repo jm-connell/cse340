@@ -77,12 +77,89 @@ h1 {
 }
 
 .promo-card {
-  background-color: #ed13de23;
+  background-color: #ed13deaf;
+  color: white;
   width: fit-content;
   padding: 5px;
   border-radius: 4px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
 }
 
 .promo-card h3, p {
   margin: auto;
+}
+
+.promo-card a {
+  display: inline-block;
+  margin: 3px auto;
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.promo-card a, a:visited {
+  text-decoration: none;
+  background-color: white;
+  color: black;
+}
+
+.promo-card a:hover {
+  transition: 0.2s;
+  color: white;
+  background-color: black;
+}
+
+.banner img {
+  width: 100%;
+}
+
+.banner {
+  position: relative;
+}
+
+h2 {
+  margin: auto;
+  padding: 10px 0 10px 10px;
+}
+
+.reviews ul {
+  margin: 0;
+}
+
+.upgrade-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.upgrade-card img {
+  display: block;
+}
+
+.upgrade-card img, a {
+  margin: auto;
+}
+
+.upgrade-card a {
+  color: white;
+}
+
+.upgrade-card {
+  margin: 10px 20px;;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #080808;
+  border-radius: 4px;
+}
+
+/* Footer Styles */
+footer {
+  padding: 10px;
 }
