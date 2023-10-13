@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 
 /******* Change Box Model ***************/
 *,
@@ -9,8 +9,9 @@
 
 /* Styles for checkerboard pattern and body background */
 html {
-  font-family: 'Open Sans', sans-serif;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70"><rect width="35" height="35" fill="%23080808"/><rect x="35" width="35" height="35" fill="%23f60fde"/><rect y="35" width="35" height="35" fill="%23f60fde"/><rect x="35" y="35" width="35" height="35" fill="%23080808"/></svg>') repeat;
+  font-family: "Open Sans", sans-serif;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70"><rect width="35" height="35" fill="%23080808"/><rect x="35" width="35" height="35" fill="%23f60fde"/><rect y="35" width="35" height="35" fill="%23f60fde"/><rect x="35" y="35" width="35" height="35" fill="%23080808"/></svg>')
+    repeat;
 }
 
 body {
@@ -33,8 +34,10 @@ body {
   margin-bottom: 5px;
 }
 
-.siteName a, #tools a,
-.siteName a:visited, #tools a:visited {
+.siteName a,
+#tools a,
+.siteName a:visited,
+#tools a:visited {
   text-decoration: none;
   color: black;
 }
@@ -88,7 +91,8 @@ h1 {
   z-index: 1;
 }
 
-.promo-card h3, p {
+.promo-card h3,
+p {
   margin: auto;
 }
 
@@ -100,7 +104,8 @@ h1 {
   transition: 0.2s;
 }
 
-.promo-card a, a:visited {
+.promo-card a,
+a:visited {
   text-decoration: none;
   background-color: white;
   color: black;
@@ -140,7 +145,8 @@ h2 {
   display: block;
 }
 
-.upgrade-card img, a {
+.upgrade-card img,
+a {
   margin: auto;
 }
 
@@ -149,7 +155,7 @@ h2 {
 }
 
 .upgrade-card {
-  margin: 10px 20px;;
+  margin: 10px 20px;
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
