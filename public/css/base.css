@@ -51,7 +51,7 @@ body {
 }
 
 /* Navigation Styles */
-.nav-list {
+nav ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
@@ -59,17 +59,23 @@ body {
   padding: 10px 0;
   margin: 0 7px;
   background-color: black;
-  color: white;
   border-radius: 4px;
 }
 
-.nav-list li a {
+nav ul li a {
+  text-decoration: none;
+  color: white; /* Initially white text on a black background */
   padding: 10px 15px;
+  transition: 0.2s; /* Smooth transition for color change */
 }
 
-.nav-list li a:hover {
-  background-color: white;
-  color: black;
+nav ul li a:hover {
+  background-color: white; /* Background turns white on hover */
+  color: black; /* Text turns black on hover */
+}
+
+nav ul li a::after {
+  color: white;
 }
 
 /* Body Styles */
@@ -105,7 +111,7 @@ p {
 }
 
 .promo-card a,
-a:visited {
+.promo-card a:visited {
   text-decoration: none;
   background-color: white;
   color: black;
