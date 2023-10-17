@@ -171,6 +171,35 @@ a {
   border-radius: 4px;
 }
 
+/* Classification View Styles */
+#inv-display {
+  list-style: none;
+  padding: 0;
+}
+
+#inv-display li {
+  border: 1px solid black;
+  margin: 1rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 4px 4px 8px 2px #080808;
+}
+
+#inv-display li a img {
+  width: 100%;
+  margin: auto;
+  border-radius: 6px 6px 0 0;
+}
+
+.namePrice {
+  padding-bottom: 10px;
+}
+
+.namePrice h2,
+span {
+  padding: 0 0 0 10px;
+}
+
 /* Footer Styles */
 footer {
   padding: 10px;
