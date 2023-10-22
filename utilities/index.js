@@ -77,4 +77,24 @@ Util.buildClassificationGrid = async function (data) {
   return grid;
 };
 
+/* **************************************
+ * Build the detail view HTML
+ * ************************************ */
+Util.buildDetailView = async function (vehicle) {
+  const formatter = new Intl.NumberFormat("en-US");
+
+  const html = `
+    <div class="vehicle-detail">
+      <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${
+    vehicle.inv_model
+  }" />
+      <p>Year: ${vehicle.inv_year}</p>
+      <p>Price: $${formatter.format(vehicle.inv_price)}</p>
+      <p>Mileage: ${formatter.format(vehicle.inv_mileage)} miles</p>
+    </div>
+  `;
+
+  return html;
+};
+
 module.exports = Util;
