@@ -90,7 +90,7 @@ Util.buildDetailView = async function (vehicle) {
   }" />
       <p>Year: ${vehicle.inv_year}</p>
       <p>Price: $${formatter.format(vehicle.inv_price)}</p>
-      <p>Mileage: ${formatter.format(vehicle.inv_mileage)} miles</p>
+      <p>Mileage: ${formatter.format(vehicle.inv_miles)} miles</p>
     </div>
   `;
 

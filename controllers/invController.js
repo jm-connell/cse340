@@ -22,32 +22,25 @@ invCont.buildByClassificationId = async function (req, res, next) {
 /* ***************************
  *  Build vehicle detail view
  * ************************** */
-let isDetailViewProcessed = false; // flag because detail build is called twice
-
+// put into try/catch block
 invCont.buildById = async function (req, res, next) {
-  if (isDetailViewProcessed) {
-    return;
-  }
   // get inventory id from params
-  const inventory_id = req.params.inventoryId;
-  console.log(`\nINVENTORY ID: ${inventory_id}`);
+  const inventory_id = req.params.inv_id;
 
   // get specific vehicle data
   const vehicleDetails = await invModel.getInventoryItemById(inventory_id);
-
-  console.log(`VEHICLE DETAILS: ${vehicleDetails}`);
 
   // in case vehicle isn't found
   if (!vehicleDetails) {
     return res.status(404).send("Vehicle not found");
   }
 
-  const detailView = await utilities.buildDetailView(vehicleDetails);
   const nav = await utilities.getNav();
+  const detailView = await utilities.buildDetailView(vehicleDetails);
 
   // render detail view
   res.render("./inventory/detail", {
-    title: vehicleDetails.make + " " + vehicleDetails.model,
+    title: vehicleDetails.inv_make + " " + vehicleDetails.inv_model,
     nav,
     detailView,
   });

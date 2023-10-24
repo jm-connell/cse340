@@ -36,11 +36,24 @@ async function getInventoryItemById(inv_id) {
       `SELECT * FROM public.inventory WHERE inv_id = $1`,
       [inv_id]
     );
-    return data.rows;
+    return data.rows[0];
   } catch (error) {
     console.error("getInventoryItemById error " + error);
   }
 }
+
+// example function to get item by id
+/* async function getInventoryItemById(inv_id) {
+  try {
+    const data = await poolquery(
+      `SELECT * FROM public.inventory as i
+      WHERE i.inv_id = $1`,
+      [inv_id]
+    ) return data.rows[0]
+  } catch (error) {
+    console.error("getInventoryItemById error " + error);
+  }
+} */
 
 module.exports = {
   getClassifications,
