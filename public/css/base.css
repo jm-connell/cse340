@@ -200,7 +200,26 @@ span {
   padding: 0 0 0 10px;
 }
 
+/* Detail View Styles */
+.vehicle-detail {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.vehicle-detail img {
+  width: 95%;
+  margin: auto;
+  display: block;
+  border-radius: 6px;
+  box-shadow: 4px 4px 16px 1px #080808;
+}
+
+.vehicle-detail-text {
+  font-size: 1.2rem;
+}
+
 /* Footer Styles */
 footer {
+  margin-top: 50px;
   padding: 10px;
 }
