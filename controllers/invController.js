@@ -46,4 +46,6 @@ invCont.buildById = async function (req, res, next) {
   });
 };
 
+// buildError, throwNewError? doesn't need specific error, just send back an error
+
 module.exports = invCont;

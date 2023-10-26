@@ -88,9 +88,11 @@ Util.buildDetailView = async function (vehicle) {
       <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${
     vehicle.inv_model
   }" />
-      <p>Year: ${vehicle.inv_year}</p>
-      <p>Price: $${formatter.format(vehicle.inv_price)}</p>
-      <p>Mileage: ${formatter.format(vehicle.inv_miles)} miles</p>
+      <div class="vehicle-detail-text">
+        <p>Year: ${vehicle.inv_year}</p>
+        <p>Price: $${formatter.format(vehicle.inv_price)}</p>
+        <p>Mileage: ${formatter.format(vehicle.inv_miles)} miles</p>
+      </div>
     </div>
   `;
 

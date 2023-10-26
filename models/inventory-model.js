@@ -42,19 +42,6 @@ async function getInventoryItemById(inv_id) {
   }
 }
 
-// example function to get item by id
-/* async function getInventoryItemById(inv_id) {
-  try {
-    const data = await poolquery(
-      `SELECT * FROM public.inventory as i
-      WHERE i.inv_id = $1`,
-      [inv_id]
-    ) return data.rows[0]
-  } catch (error) {
-    console.error("getInventoryItemById error " + error);
-  }
-} */
-
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
