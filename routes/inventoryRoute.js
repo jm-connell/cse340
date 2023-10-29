@@ -2,16 +2,22 @@
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
+const utilities = require("../utilities");
 
 // Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
+router.get(
+  "/type/:classificationId",
+  utilities.handleError(invController.buildByClassificationId)
+);
 
 // Route for detail view
-router.get("/detail/:inv_id", invController.buildById);
+router.get("/detail/:inv_id", utilities.handleError(invController.buildById));
 
-// Route to build error ? needs to be wrapped in task 2
-//router.get("/error", invController.buildError); // path?, buildError doesn't exist yet
+// Route to build error
+/* router.get("/", utilities.handleError(invController.buildError)); */
+
+router.get("/", async (req, res, next) => {
+  await utilities.handleError(invController.buildError)(req, res, next);
+});
 
 module.exports = router;
-
-// error handling in this file

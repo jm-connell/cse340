@@ -203,6 +203,7 @@ span {
 /* Detail View Styles */
 .vehicle-detail {
   display: grid;
+  grid-row-gap: 15px;
   grid-template-columns: 1fr;
 }
 
@@ -214,8 +215,18 @@ span {
   box-shadow: 4px 4px 16px 1px #080808;
 }
 
+.vehicle-detail img:hover {
+  box-shadow: 4px 4px 16px 2px #080808;
+}
+
 .vehicle-detail-text {
   font-size: 1.2rem;
+  padding-left: 15px;
+}
+
+/* Error Styles */
+.error-message {
+  padding-left: 10px;
 }
 
 /* Footer Styles */

@@ -95,8 +95,15 @@ Util.buildDetailView = async function (vehicle) {
       </div>
     </div>
   `;
-
   return html;
 };
+
+/* **************************************
+ * Middleware for handling errors
+ * Wrap other function in this for
+ * general error handling
+ * ************************************ */
+Util.handleError = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch(next);
 
 module.exports = Util;
