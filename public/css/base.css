@@ -229,6 +229,46 @@ span {
   padding-left: 10px;
 }
 
+/* Account Login/Creation Styles */
+.account-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.account-form label,
+.account-form input,
+.account-form p {
+  width: 80%;
+  margin: auto;
+}
+
+.account-form input {
+  border-radius: 4px;
+  padding: 3px;
+}
+
+.form-label {
+  text-align: center;
+}
+
+.account-form input[type="submit"] {
+  margin: 10px auto;
+  width: 100px;
+  padding: 5px 3px;
+}
+
+.registration-form input:required:not(:placeholder-shown):invalid,
+.registration-form input:focus:invalid {
+  border: 3px solid red;
+  outline: none;
+}
+
+.registration-form input:required:not(:placeholder-shown):valid {
+  border: 2px solid green;
+  outline: none;
+}
+
 /* Footer Styles */
 footer {
   margin-top: 50px;

@@ -4,7 +4,7 @@
   }
 
   h1 {
-    text-align: left;
+    text-align: center;
     padding: 10px 0 10px 15px;
   }
 
@@ -49,5 +49,13 @@
 
   .vehicle-detail-text {
     grid-column: 2 / 3;
+  }
+
+  /* Form Styles */
+  .account-form label,
+  .account-form input,
+  .account-form p {
+    width: 300px;
+    margin: auto;
   }
 }
