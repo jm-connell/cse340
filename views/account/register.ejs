@@ -40,7 +40,7 @@
     type="password"
     id="password"
     name="account_password"
-    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{12,}"
+    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
     title="Must contain at least one number, one uppercase letter, one lowercase letter, one special character, and be at least 12 characters long."
     placeholder=" "
     required
