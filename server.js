@@ -12,7 +12,34 @@ const app = express();
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController.js");
 const inventoryRoute = require("./routes/inventoryRoute.js");
+const accountRoute = require("./routes/accountRoute.js");
 const utilities = require("./utilities");
+const session = require("express-session");
+const pool = require("./database/");
+const bodyParser = require("body-parser");
+
+/* ***********************
+ * View Engine and Templates
+ *************************/
+app.use(
+  session({
+    store: new (require("connect-pg-simple")(session))({
+      createTableIfMissing: true,
+      pool,
+    }),
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    name: "sessionId",
+  })
+);
+
+// Express Messages Middleware
+app.use(require("connect-flash")());
+app.use(function (req, res, next) {
+  res.locals.messages = require("express-messages")(req, res);
+  next();
+});
 
 /* ***********************
  * View Engine and Templates
@@ -22,6 +49,12 @@ app.use(expressLayouts);
 app.set("layout", "./layouts/layout"); // not at views root
 
 /* ***********************
+ * BodyParser Middleware
+ *************************/
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+/* ***********************
  * Routes
  *************************/
 app.use(static);
@@ -29,6 +62,8 @@ app.use(static);
 app.get("/", utilities.handleError(baseController.buildHome));
 // Inventory routes
 app.use("/inv", inventoryRoute);
+app.use("/account", accountRoute);
+
 // 500 error route
 app.get("/errors/intentional-500", (req, res, next) => {
   next({ status: 500, message: "Intentional 500 Error" });
