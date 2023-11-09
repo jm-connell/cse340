@@ -1,6 +1,13 @@
 <% if (title) { %>
 <h1><%= title %></h1>
-<% } else { res.redirect('/') } %> <%- messages() %>
+<% } else { res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
+<ul class="notice">
+  <% console.log('ERRORS HERE: ', errors) %> <% errors.array().forEach(error =>
+  { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
 
 <p class="form-label"><i>All fields are required</i></p>
 <form
