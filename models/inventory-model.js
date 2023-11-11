@@ -42,8 +42,24 @@ async function getInventoryItemById(inv_id) {
   }
 }
 
+/* ********************
+ * Add new classification to db
+ * ********************/
+async function addClassification(classification_name) {
+  try {
+    const data = await pool.query(
+      `INSERT INTO public.classification (classification_name) VALUES ($1)`,
+      [classification_name]
+    );
+    return data;
+  } catch (error) {
+    console.error("addClassification error " + error);
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
   getInventoryItemById,
+  addClassification,
 };

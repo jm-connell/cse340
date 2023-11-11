@@ -3,6 +3,7 @@ const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
 const utilities = require("../utilities");
+const invValidate = require("../utilities/management-validation");
 
 // Route to build inventory by classification view
 router.get(
@@ -13,11 +14,27 @@ router.get(
 // Route for detail view
 router.get("/detail/:inv_id", utilities.handleError(invController.buildById));
 
-// Route to build error
-/* router.get("/", utilities.handleError(invController.buildError)); */
+// Route for inv management
+router.get("/", (req, res, next) => {
+  utilities.handleError(invController.buildManageInventory)(req, res, next);
+});
 
-router.get("/", async (req, res, next) => {
-  await utilities.handleError(invController.buildError)(req, res, next);
+// Route for add classification page
+router.get("/add-classification", (req, res, next) => {
+  utilities.handleError(invController.buildAddClassification)(req, res, next);
+});
+
+// Handle add classification post request
+router.post(
+  "/add-classification",
+  invValidate.classificationRules(),
+  invValidate.checkClassificationData,
+  utilities.handleError(invController.addClassification)
+);
+
+// Route for add inventory page
+router.get("/add-inventory", (req, res, next) => {
+  utilities.handleError(invController.buildAddInventory)(req, res, next);
 });
 
 module.exports = router;
