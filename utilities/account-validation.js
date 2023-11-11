@@ -83,7 +83,7 @@ validate.loginRules = () => {
       })
       .withMessage("Password does not meet requirements."),
   ];
-}
+};
 
 /* ******************************
  * Check data and return errors or continue to registration
@@ -126,6 +126,6 @@ validate.checkLoginData = async (req, res, next) => {
     return;
   }
   next();
-}
+};
 
 module.exports = validate;
