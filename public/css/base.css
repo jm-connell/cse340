@@ -55,6 +55,7 @@ nav ul {
   list-style: none;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
   padding: 10px 0;
   margin: 0 7px;
@@ -62,11 +63,18 @@ nav ul {
   border-radius: 4px;
 }
 
+nav ul li {
+  flex: 1 0 auto;
+  text-align: center;
+  margin: 8px auto;
+}
+
 nav ul li a {
   text-decoration: none;
   color: white; /* Initially white text on a black background */
   padding: 10px 15px;
   transition: 0.2s; /* Smooth transition for color change */
+  text-align: center;
 }
 
 nav ul li a:hover {
@@ -224,6 +232,11 @@ span {
   padding-left: 15px;
 }
 
+.vehicle-detail-text button {
+  padding: 7px 5px;
+  margin: 10px auto;
+}
+
 /* Error Styles */
 .error-message {
   padding-left: 10px;
@@ -267,6 +280,75 @@ span {
 .registration-form input:required:not(:placeholder-shown):valid {
   border: 2px solid green;
   outline: none;
+}
+
+/* Management Styles */
+.management-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  width: 80%;
+  margin: auto;
+}
+
+.management-form button {
+  padding: 7px 5px;
+  margin: 10px auto;
+}
+
+.management-form input:required:not(:placeholder-shown):invalid,
+.management-form input:focus:invalid {
+  border: 3px solid red;
+  outline: none;
+}
+
+.management-form input:required:not(:placeholder-shown):valid {
+  border: 2px solid green;
+  outline: none;
+}
+
+.management-form input,
+.management-form select,
+.management-form textarea {
+  border-radius: 4px;
+  padding: 3px;
+  outline: none;
+}
+
+.management-links {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px auto;
+}
+
+.management-links a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: 0.05s;
+  border: 1px solid black;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.management-links a:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Flash message and notice styles */
+.flash-message {
+  margin: auto;
+}
+
+.notice li {
+  color: red;
+  font-style: italic;
+  list-style: none;
+  margin: auto;
 }
 
 /* Footer Styles */
