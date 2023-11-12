@@ -99,6 +99,26 @@ Util.buildDetailView = async function (vehicle) {
 };
 
 /* **************************************
+ * Build the classification dropdown
+ * ************************************ */
+Util.buildDropdown = async function () {
+  let classifications = await invModel.getClassifications();
+  const dropdownOptions = classifications.rows
+    .map((classification) => {
+      return `<option value="${classification.classification_id}">${classification.classification_name}</option>`;
+    })
+    .join("");
+
+  const dropdown = `
+    <select id="classification-id" name="classification_id">
+      ${dropdownOptions}
+    </select>
+  `;
+
+  return dropdown;
+};
+
+/* **************************************
  * Middleware for handling errors
  * Wrap other function in this for
  * general error handling

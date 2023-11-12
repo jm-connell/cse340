@@ -37,4 +37,12 @@ router.get("/add-inventory", (req, res, next) => {
   utilities.handleError(invController.buildAddInventory)(req, res, next);
 });
 
+// Handle add inventory post request
+router.post(
+  "/add-inventory",
+  invValidate.inventoryRules(),
+  invValidate.checkInventoryData,
+  utilities.handleError(invController.addInventory)
+);
+
 module.exports = router;
