@@ -58,4 +58,9 @@
     width: 300px;
     margin: auto;
   }
+
+  /* Management styles */
+  .management-links {
+    max-width: 600px;
+  }
 }

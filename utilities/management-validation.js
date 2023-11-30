@@ -118,7 +118,18 @@ validate.inventoryRules = () => {
  * ***************************** */
 validate.checkInventoryData = async (req, res, next) => {
   const errors = validationResult(req);
-  const { inv_make, inv_model } = req.body;
+  const {
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
 
   // if there are errors, send back with error messages
   if (!errors.isEmpty()) {
@@ -131,6 +142,14 @@ validate.checkInventoryData = async (req, res, next) => {
       errors,
       inv_make,
       inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
     });
   }
 
