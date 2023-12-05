@@ -40,6 +40,7 @@ async function checkExistingEmail(account_email) {
  * Return account data using email address
  * ***************************** */
 async function getAccountByEmail(account_email) {
+  console.log("\ngetting account by email from model\n");
   try {
     const result = await pool.query(
       "SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_email = $1",

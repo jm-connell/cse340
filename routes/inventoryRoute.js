@@ -24,6 +24,12 @@ router.get("/add-classification", (req, res, next) => {
   utilities.handleError(invController.buildAddClassification)(req, res, next);
 });
 
+// Route for getInventory
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleError(invController.getInventoryJSON)
+);
+
 // Handle add classification post request
 router.post(
   "/add-classification",

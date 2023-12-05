@@ -121,12 +121,20 @@ async function accountLogin(req, res) {
  *  Build Account Home
  * *************************************** */
 async function buildAccountHome(req, res) {
+  console.log("\nbuilding account home\n");
   let nav = await utilities.getNav();
   req.flash("notice", "You are logged in.");
-  res.render("account/", {
+  res.render("account/account-home", {
     title: "Account Home",
     nav,
+    errors: null,
   });
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin };
+module.exports = {
+  buildLogin,
+  buildRegister,
+  registerAccount,
+  accountLogin,
+  buildAccountHome,
+};
