@@ -61,6 +61,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 /* ***********************
+ * JWT Validation Middleware
+ *************************/
+app.use(utilities.checkJWTToken);
+
+/* ***********************
  * Routes
  *************************/
 app.use(static);
