@@ -30,6 +30,9 @@ router.get(
   utilities.handleError(invController.getInventoryJSON)
 );
 
+// Route for inventory modification
+router.get("/edit/:inv_id", utilities.handleError(invController.buildInvEdit));
+
 // Handle add classification post request
 router.post(
   "/add-classification",

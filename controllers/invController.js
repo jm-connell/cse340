@@ -201,4 +201,9 @@ invCont.getInventoryJSON = async (req, res, next) => {
   }
 };
 
+/* ***************************
+ * Build Inventory Edit
+ * ************************** */
+invCont.buildInvEdit = async (req, res, next) => {};
+
 module.exports = invCont;
