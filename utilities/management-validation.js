@@ -157,4 +157,50 @@ validate.checkInventoryData = async (req, res, next) => {
   next();
 };
 
+/* ******************************
+ * Check update data and continue to db if valid, return to edit if not
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const errors = validationResult(req);
+  const {
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id,
+  } = req.body;
+
+  // if there are errors, send back with error messages
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    let dropdown = await utilities.buildDropdown();
+    return res.render("./inventory/edit-inventory", {
+      title: `Edit ${inv_make} ${inv_model}`,
+      nav,
+      dropdown,
+      errors,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+    });
+  }
+
+  // if no errors, continue to db
+  next();
+};
+
 module.exports = validate;
