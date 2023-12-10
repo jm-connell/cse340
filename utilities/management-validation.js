@@ -37,6 +37,7 @@ validate.checkClassificationData = async (req, res, next) => {
       nav,
       errors,
       classification_name,
+      messages: req.flash(),
     });
   }
 
@@ -140,6 +141,7 @@ validate.checkInventoryData = async (req, res, next) => {
       nav,
       dropdown,
       errors,
+      messages: req.flash(),
       inv_make,
       inv_model,
       inv_year,
@@ -185,6 +187,7 @@ validate.checkUpdateData = async (req, res, next) => {
       nav,
       dropdown,
       errors,
+      messages: req.flash(),
       inv_id,
       inv_make,
       inv_model,

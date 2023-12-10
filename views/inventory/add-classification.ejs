@@ -1,16 +1,14 @@
 <% if (title) { %>
 <h1><%= title %></h1>
-<% } else { res.redirect('/') } %>
-<p class="flash-message"><%- messages() %></p>
-<% if (errors) { %>
+<% } else { res.redirect('/') } %> <% if (messages && messages.notice) { %>
+<p class="flash-message"><%= messages.notice %></p>
+<% } %> <% if (errors) { %>
 <ul class="notice">
   <% errors.array().forEach(error => { %>
   <li><%= error.msg %></li>
   <% }) %>
 </ul>
 <% } %>
-
-<p class="flash-message"><%- messages() %></p>
 
 <p class="form-label">
   <i>Classification name must be alphabetic characters only</i>

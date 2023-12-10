@@ -166,4 +166,23 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+/* ****************************************
+ * Middleware to check if user is Employee or Admin from JWT
+ **************************************** */
+Util.checkAdmin = (req, res, next) => {
+  if (
+    res.locals.loggedin &&
+    (res.locals.accountData.account_type === "Employee" ||
+      res.locals.accountData.account_type === "Admin")
+  ) {
+    next();
+  } else {
+    req.flash(
+      "notice",
+      "You must be logged in as an Employee or Admin to access this page"
+    );
+    return res.redirect("/account/login");
+  }
+};
+
 module.exports = Util;

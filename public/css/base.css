@@ -342,6 +342,7 @@ span {
 /* Flash message and notice styles */
 .flash-message {
   margin: auto;
+  width: fit-content;
 }
 
 .notice li {
@@ -349,6 +350,29 @@ span {
   font-style: italic;
   list-style: none;
   margin: auto;
+}
+
+/* Account Management Styles */
+.update-button {
+  min-width: 150px;
+  width: 40%;
+  margin: 10px auto;
+}
+
+#management-home {
+  margin: auto;
+  text-align: center;
+}
+
+#management-home p {
+  margin-top: 5px;
+  width: fit-content;
+  padding: 5px 7px;
+  border-radius: 6px;
+}
+
+#management-home p:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Footer Styles */

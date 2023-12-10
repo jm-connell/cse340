@@ -13,6 +13,7 @@ async function buildLogin(req, res, next) {
     title: "Login",
     nav,
     errors: null,
+    messages: req.flash(),
   });
 }
 
@@ -25,6 +26,7 @@ async function buildRegister(req, res, next) {
     title: "Register",
     nav,
     errors: null,
+    messages: req.flash(),
   });
 }
 
@@ -54,6 +56,7 @@ async function registerAccount(req, res) {
       title: "Registration",
       nav,
       errors: null,
+      messages: req.flash(),
     });
     return;
   }
@@ -73,12 +76,14 @@ async function registerAccount(req, res) {
     res.status(201).render("account/login", {
       title: "Login",
       nav,
+      messages: req.flash(),
     });
   } else {
     req.flash("notice", "Sorry, the registration failed.");
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
+      messages: req.flash(),
     });
   }
 }
@@ -98,6 +103,7 @@ async function accountLogin(req, res) {
       nav,
       errors: null,
       account_email,
+      messages: req.flash(),
     });
     return;
   }
@@ -128,6 +134,114 @@ async function buildAccountHome(req, res) {
     title: "Account Home",
     nav,
     errors: null,
+    messages: req.flash(),
+  });
+}
+
+/* ****************************************
+ *  Build Manage Account
+ * *************************************** */
+async function buildManageAccount(req, res) {
+  let nav = await utilities.getNav();
+  const accountData = await accountModel.getAccountByEmail(
+    res.locals.accountData.account_email
+  );
+
+  if (!accountData) {
+    req.flash("notice", "Account not found.");
+    res.status(404).render("account/login", {
+      title: "Login",
+      nav,
+      errors: null,
+      messages: req.flash(),
+    });
+    return;
+  }
+
+  res.render("account/account-manage", {
+    title: "Manage Account",
+    nav,
+    errors: null,
+    account: accountData,
+    messages: req.flash(),
+  });
+}
+
+/* ****************************************
+ *  Deliver Account Update View
+ * *************************************** */
+async function buildAccountUpdate(req, res) {
+  let nav = await utilities.getNav();
+
+  res.render("account/account-update", {
+    title: "Update Account",
+    nav,
+    errors: null,
+    accountData: res.locals.accountData, // pass accountData to the view
+    messages: req.flash(),
+  });
+}
+
+/* ****************************************
+ *  Handle Account Update
+ * *************************************** */
+async function updateAccount(req, res) {
+  console.log("\nupdating account\n");
+  let nav = await utilities.getNav();
+  const { account_id } = res.locals.accountData;
+
+  // Get updated data from form
+  const { account_firstname, account_lastname, account_email } = req.body;
+
+  const result = await accountModel.updateAccount(
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  );
+
+  if (result) {
+    req.flash("notice", "Account updated successfully.");
+  } else {
+    req.flash("notice", "Account update failed.");
+  }
+
+  const accountData = await accountModel.getAccountById(account_id);
+
+  res.render("account/account-manage", {
+    title: "Manage Account",
+    nav,
+    errors: null,
+    account: accountData,
+    messages: req.flash(),
+  });
+}
+
+/* ****************************************
+ *  Handle Password Change
+ * *************************************** */
+async function changePassword(req, res) {
+  console.log("\nchanging password\n");
+  let nav = await utilities.getNav();
+  const { account_id, password } = res.locals.accountData;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const result = await accountModel.changePassword(account_id, hashedPassword);
+
+  if (result) {
+    req.flash("notice", "Password changed successfully.");
+  } else {
+    req.flash("notice", "Password change failed.");
+  }
+
+  const accountData = await accountModel.getAccountById(account_id);
+
+  res.render("account/account-manage", {
+    title: "Manage Account",
+    nav,
+    errors: null,
+    account: accountData,
+    messages: req.flash(),
   });
 }
 
@@ -137,4 +251,8 @@ module.exports = {
   registerAccount,
   accountLogin,
   buildAccountHome,
+  buildManageAccount,
+  buildAccountUpdate,
+  updateAccount,
+  changePassword,
 };

@@ -34,4 +34,45 @@ router.post(
   utilities.handleError(accountController.accountLogin)
 );
 
+// Account Management route
+router.get(
+  "/manage",
+  utilities.checkLogin,
+  utilities.handleError(accountController.buildManageAccount)
+);
+
+// Account Update route
+router.get(
+  "/update/:id",
+  utilities.checkLogin,
+  utilities.handleError(accountController.buildAccountUpdate)
+);
+
+// Handle account update post request
+router.post(
+  "/update",
+  utilities.checkLogin,
+  regValidate.updateAccountRules(),
+  regValidate.checkUpdateAccountData,
+  utilities.handleError(accountController.updateAccount)
+);
+
+// Change Password route
+router.post(
+  "/change-password",
+  utilities.checkLogin,
+  regValidate.changePasswordRules(),
+  regValidate.checkChangePasswordData,
+  utilities.handleError(accountController.changePassword)
+);
+
+// Logout route
+router.get("/logout", (req, res) => {
+  // Clear JWT from cookies
+  res.clearCookie("jwt");
+
+  // Redirect to login page
+  res.redirect("/account/login");
+});
+
 module.exports = router;

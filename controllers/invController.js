@@ -41,6 +41,7 @@ invCont.buildById = async function (req, res, next) {
     title: vehicleDetails.inv_make + " " + vehicleDetails.inv_model,
     nav,
     detailView,
+    messages: req.flash(),
   });
 };
 
@@ -56,6 +57,7 @@ invCont.buildManageInventory = async function (req, res, next) {
     nav,
     classificationSelect,
     errors: null,
+    messages: req.flash(),
   });
 };
 
@@ -68,6 +70,7 @@ invCont.buildAddClassification = async function (req, res, next) {
     title: "Add Classification",
     nav,
     errors: null,
+    messages: req.flash(),
   });
 };
 
@@ -97,6 +100,7 @@ invCont.addClassification = async function (req, res) {
       title: "Add Classification",
       nav,
       errors: null,
+      messages: req.flash(),
     });
   }
 };
@@ -112,6 +116,7 @@ invCont.buildAddInventory = async function (req, res, next) {
     nav,
     dropdown,
     errors: null,
+    messages: req.flash(),
   });
 };
 
@@ -164,6 +169,7 @@ invCont.addInventory = async function (req, res) {
       nav,
       dropdown,
       errors: null,
+      messages: req.flash(),
     });
   }
 };
@@ -207,6 +213,7 @@ invCont.buildInvEdit = async (req, res, next) => {
     nav,
     dropdown,
     errors: null,
+    messages: req.flash(),
     inv_id: data.inv_id,
     inv_make: data.inv_make,
     inv_model: data.inv_model,
@@ -269,7 +276,52 @@ invCont.updateInventory = async function (req, res) {
       nav,
       dropdown,
       errors: null,
+      messages: req.flash(),
     });
+  }
+};
+
+/* ***************************
+ *  Build Delete Confirmation Page
+ * ************************** */
+invCont.buildDeleteConfirmation = async (req, res, next) => {
+  const inv_id = parseInt(req.params.inv_id);
+  let nav = await utilities.getNav();
+  const data = await invModel.getInventoryItemById(inv_id);
+  let name = `${data.inv_make} ${data.inv_model}`; // name variable to hold the inventory item's make and model
+  res.render("./inventory/delete-confirm", {
+    title: `Delete ${name}`,
+    nav,
+    errors: null,
+    messages: req.flash(),
+    inv_id: data.inv_id,
+    inv_make: data.inv_make,
+    inv_model: data.inv_model,
+    inv_year: data.inv_year,
+    inv_price: data.inv_price,
+  });
+};
+
+/* ***************************
+ * Delete Inventory Data
+ * ************************** */
+invCont.deleteInventory = async function (req, res) {
+  let nav = await utilities.getNav();
+
+  const { inv_make, inv_model } = req.body;
+  const inv_id = parseInt(req.body.inv_id);
+
+  const deleteInventoryResult = await invModel.deleteInventory(inv_id);
+
+  if (deleteInventoryResult) {
+    req.flash("notice", `${inv_make} ${inv_model} deleted successfully.`);
+    res.redirect("/inv");
+  } else {
+    req.flash(
+      "error",
+      `Sorry, there was an error deleting the data for ${inv_make} ${inv_model}.`
+    );
+    res.status(501).redirect(`/inv/delete-confirm/${inv_id}`);
   }
 };
 
