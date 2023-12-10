@@ -339,6 +339,21 @@ span {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+#inventory-management-menu {
+  margin: auto;
+  text-align: center;
+}
+
+#inventory-management-menu select {
+  margin: 10px auto;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid black;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
 /* Flash message and notice styles */
 .flash-message {
   margin: auto;
